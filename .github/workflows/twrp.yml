@@ -5,7 +5,8 @@ on:
 
 env:
   # (required) twrp manifest 
-  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11
+  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git 
+
   # (required) manifest branch 
   BRANCH: twrp-11
   # (required) device Infinix-X698
