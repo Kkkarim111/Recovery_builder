@@ -5,26 +5,26 @@ on:
 
 env:
   # (required) twrp manifest 
-  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git
+  MANIFEST: https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp.git -b twrp-11.0
   # (required) manifest branch 
-  BRANCH: twrp-9.0
-  # (required) device codename i.e: sweet mojito.. 
-  DEVICE: m10lte
+  BRANCH: twrp-11.0
+  # (required) device Infinix-X698
+  DEVICE: Infinix_X698
   # (required) device tree link with branch if exists
-  DT_LINK: https://github.com/SA-15/android_device_samsung_m10lte
+  DT_LINK: https://github.com/Abdullashakee/android_device_infinix_Infinix-X698
   # (required) who made your phone ? 
-  MANUFACTURER: samsung
+  MANUFACTURER: infinix
   # (required) recovery partiton = recovery, else (no recovery partition): boot 
   TARGET: recovery
   # dont change that
   IMAGE: image
   # (required) depend of device tree if you see twrp_"codename".mk use twrp
-  # else (omni_"codename".mk): omni
-  OT: omni
+  # else (twrp_"Infinix-X698".mk): twrp
+  OT: twrp
   # dont change that
   SYM: _
-  # (required) output format for some reason samsung phones need a custom mkbootimg
-  # which compress your recovery into .tar (default: .img / samsung + custom mkbootimg: .tar) 
+  # (required) output format for some reason infinix phones need a custom mkbootimg
+  # which compress your recovery into .tar (default: .img / infinix + custom mkbootimg: .tar) 
   FORMAT: .tar
 
 jobs:
@@ -56,7 +56,7 @@ jobs:
          run: |
               cd work
               . build/envsetup.sh && lunch $OT$SYM$DEVICE-eng && export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET$IMAGE -j60
-              zip twrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$DEVICE/$TARGET$FORMAT
+              zip twrp.zip /home/runner/work/Recovery_builder/Recovery_builder/work/out/target/product/$Device/$TARGET$FORMAT
 
        - name: Save in artifact
          uses: actions/upload-artifact@v3
